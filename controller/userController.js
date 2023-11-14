@@ -257,7 +257,7 @@ exports.updateUser = async (req, res) => {
     let check = req.user;
     let { firstName, lastName, email, mobile, addressId, password } = req.body;
     let picture = req.file ? req.file.path : null;
-    
+    // console.log(picture);
     const hashPassword = await bcrypt.hashSync(password, 10);
     
     if (picture && check.picture != null) {
@@ -267,6 +267,7 @@ exports.updateUser = async (req, res) => {
         }
       });
     }
+
     let user = await userModel.findByIdAndUpdate(
       { _id: check._id },
       {
@@ -276,6 +277,7 @@ exports.updateUser = async (req, res) => {
           email: email,
           mobile: mobile,
           picture: picture ? req.file.path : check.picture,
+          // picture: `http://localhost:4500/${picture}`,
           addressId: addressId,
           password: hashPassword,
         },
@@ -292,7 +294,7 @@ exports.updateUser = async (req, res) => {
 
 //=====================  Get all users  =====================//
 
-exports.getAllusers = async (req, res) => {
+exports.getAllUsers = async (req, res) => {
   try {
     let data = await userModel.find({ disable: false });
     if (!data.length) {

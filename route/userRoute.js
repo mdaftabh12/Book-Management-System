@@ -16,7 +16,7 @@ router.get(
   auth,
   userController.getByUserId
 );
-router.get("/getAllUsers", auth, userController.getAllusers);
+router.get("/getAllUsers", auth, userController.getAllUsers);
 router.put(
   "/updateUser/:userId",
   upload.single("picture"),

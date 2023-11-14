@@ -36,6 +36,7 @@ const port = process.env.PORT;
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use("/images", express.static("images"));
 
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
