@@ -1,5 +1,4 @@
 const multer = require("multer");
-const path = require("path");
 
 //====================  Store image (multer)  ====================//
 
@@ -9,7 +8,8 @@ exports.upload = multer({
       cb(null, "images");
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + "--" + Date.now() + ".jpg");
+      let exe =  file.originalname.slice(file.originalname.lastIndexOf('.'));
+      cb(null, Date.now() + exe);
     },
   }), 
 });

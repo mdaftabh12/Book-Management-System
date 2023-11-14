@@ -257,7 +257,7 @@ exports.updateUser = async (req, res) => {
     let check = req.user;
     let { firstName, lastName, email, mobile, addressId, password } = req.body;
     let picture = req.file ? req.file.path : null;
-    // const salt = await bcrypt.genSalt(10);
+    
     const hashPassword = await bcrypt.hashSync(password, 10);
     
     if (picture && check.picture != null) {

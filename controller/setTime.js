@@ -1,6 +1,6 @@
-let myTimeout;
 exports.setTimeOutFun = async (req, res) => {
   try {
+    let myTimeout; 
     let i = 1;
     if (myTimeout) {
       clearTimeout(myTimeout);
@@ -13,7 +13,7 @@ exports.setTimeOutFun = async (req, res) => {
           fun();
         }, 1000);
       }
-    }
+    } 
     fun();
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
